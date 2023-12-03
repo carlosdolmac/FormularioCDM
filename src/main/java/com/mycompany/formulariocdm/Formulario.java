@@ -125,7 +125,7 @@ public class Formulario extends javax.swing.JFrame {
         fondoCerrar.setBackground(new java.awt.Color(255, 255, 255));
 
         cerrar.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        cerrar.setForeground(new java.awt.Color(51, 51, 51));
+        cerrar.setForeground(new java.awt.Color(255, 51, 102));
         cerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cerrar.setText("X");
         cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
