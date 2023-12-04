@@ -4,6 +4,7 @@
  */
 package com.mycompany.formulariocdm;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatDraculaIJTheme;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -22,9 +23,9 @@ public class Formulario extends javax.swing.JFrame {
         int yMouse;
         public Formulario() {
             initComponents();
-            nombre.setText("Eva Marie");
-            email.setText("email@dominio.es");
-            contrasena.setText("********");
+            nombre.putClientProperty( FlatClientProperties.PLACEHOLDER_TEXT, "Eva Marie" );
+            email.putClientProperty( FlatClientProperties.PLACEHOLDER_TEXT, "email@dominio.es" );
+            contrasena.putClientProperty( FlatClientProperties.PLACEHOLDER_TEXT, "********" );
             registrarBoton.putClientProperty( "FlatLaf.style", "arc:0");
     }
 
@@ -74,11 +75,6 @@ public class Formulario extends javax.swing.JFrame {
         email.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         email.setForeground(new java.awt.Color(102, 102, 102));
         email.setBorder(null);
-        email.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                emailMousePressed(evt);
-            }
-        });
         email.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 emailKeyPressed(evt);
@@ -92,11 +88,6 @@ public class Formulario extends javax.swing.JFrame {
 
         contrasena.setForeground(new java.awt.Color(153, 153, 153));
         contrasena.setBorder(null);
-        contrasena.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                contrasenaMousePressed(evt);
-            }
-        });
         contrasena.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 contrasenaKeyPressed(evt);
@@ -177,11 +168,6 @@ public class Formulario extends javax.swing.JFrame {
         nombre.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         nombre.setForeground(new java.awt.Color(102, 102, 102));
         nombre.setBorder(null);
-        nombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                nombreMousePressed(evt);
-            }
-        });
         nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nombreKeyPressed(evt);
@@ -223,40 +209,6 @@ public class Formulario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailMousePressed
-        if (email.getText().equals("email@dominio.es")) {
-            email.setText("");
-            email.setForeground(Color.white);
-        }
-
-        if(String.valueOf(contrasena.getPassword()).isEmpty()) {
-            contrasena.setText("********");
-            contrasena.setForeground(Color.gray);
-        }
-        
-        if (nombre.getText().isEmpty()){
-            nombre.setText("Eva Marie");
-            nombre.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_emailMousePressed
-
-    private void contrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasenaMousePressed
-        if (String.valueOf(contrasena.getPassword()).equals("********")) {
-            contrasena.setText("");
-            contrasena.setForeground(Color.white);
-        }
-
-        if (email.getText().isEmpty()){
-            email.setText("email@dominio.es");
-            email.setForeground(Color.gray);
-        }
-        
-        if (nombre.getText().isEmpty()){
-            nombre.setText("Eva Marie");
-            nombre.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_contrasenaMousePressed
-
     private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
         System.exit(0);
     }//GEN-LAST:event_cerrarMouseClicked
@@ -269,6 +221,7 @@ public class Formulario extends javax.swing.JFrame {
     private void cerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseExited
         fondoCerrar.setBackground(Color.WHITE);
         cerrar.setForeground(Color.BLACK);
+        //
     }//GEN-LAST:event_cerrarMouseExited
 
     private void barraArribaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraArribaMouseDragged
@@ -283,42 +236,16 @@ public class Formulario extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_barraArribaMousePressed
 
-    private void nombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMousePressed
-        if (String.valueOf(nombre.getText()).equals("Eva Marie")) {
-            nombre.setText("");
-            nombre.setForeground(Color.white);
-        }
-
-        if (email.getText().isEmpty()){
-            email.setText("email@dominio.es");
-            email.setForeground(Color.gray);
-        }
-        
-        if(String.valueOf(contrasena.getPassword()).isEmpty()) {
-            contrasena.setText("********");
-            contrasena.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_nombreMousePressed
-
     private void registrarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarBotonActionPerformed
         performLogin();
     }//GEN-LAST:event_registrarBotonActionPerformed
 
     private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
+        nombre.setForeground(Color.white);
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) { // Si la tecla pulsada es enter
             if (email.getText().equals("email@dominio.es")) {
             email.setText("");
             email.setForeground(Color.white);
-        }
-
-        if(String.valueOf(contrasena.getPassword()).isEmpty()) {
-            contrasena.setText("********");
-            contrasena.setForeground(Color.gray);
-        }
-        
-        if (nombre.getText().isEmpty()){
-            nombre.setText("Eva Marie");
-            nombre.setForeground(Color.gray);
         }
         email.requestFocus(); //Pasar a email
     }
@@ -326,45 +253,18 @@ public class Formulario extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreKeyPressed
 
     private void emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailKeyPressed
+        email.setForeground(Color.white);
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) { // Si la tecla pulsada es enter
-            if (String.valueOf(contrasena.getPassword()).equals("********")) {
-            contrasena.setText("");
-            contrasena.setForeground(Color.white);
-        }
-
-        if (email.getText().isEmpty()){
-            email.setText("email@dominio.es");
-            email.setForeground(Color.gray);
-        }
-        
-        if (nombre.getText().isEmpty()){
-            nombre.setText("Eva Marie");
-            nombre.setForeground(Color.gray);
-        }
         contrasena.requestFocus(); //Pasar a contraseña
     }
         
     }//GEN-LAST:event_emailKeyPressed
 
     private void contrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contrasenaKeyPressed
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) { // Si la tecla pulsada es enter
-             if (String.valueOf(nombre.getText()).equals("Eva Marie")) {
-            nombre.setText("");
-            nombre.setForeground(Color.white);
+        contrasena.setForeground(Color.white); 
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) { // Si la tecla pulsada es enter
+            performLogin(); //Hacer el método del Login (El que se haría al pulsar el botón)
         }
-
-        if (email.getText().isEmpty()){
-            email.setText("email@dominio.es");
-            email.setForeground(Color.gray);
-        }
-        
-        if(String.valueOf(contrasena.getPassword()).isEmpty()) {
-            contrasena.setText("********");
-            contrasena.setForeground(Color.gray);
-        }
-        performLogin(); //Hacer el método del Login (El que se haría al pulsar el botón)
-    }
-         
     }//GEN-LAST:event_contrasenaKeyPressed
     //Método para el Login
     private void performLogin() {
